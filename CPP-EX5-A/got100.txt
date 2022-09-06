@@ -1,0 +1,177 @@
+moriya@ubuntu:~/SemesterB/matala5-a$ bash grade
+--- 0 seconds
+
+
+### Cleaning old files ###
+rm -f objects/OrgChart.o *.o test* demo*
+rm -f StudentTest*.cpp
+
+
+### Check 1: our demo program should compile with your class
+! timeout 20 make -j8 -f Makefile demo
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources --compile Demo.cpp -o Demo.o
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/OrgChart.cpp -o objects/OrgChart.o
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources Demo.o objects/OrgChart.o -o demo
+--- 1 seconds
+### Score 1: 100
+
+
+### Check 2: our demo program should run without errors
+! timeout 20 ./demo
+
+--- 1 seconds
+### Score 2: 100
+
+
+### Check 3: your test should compile 
+! timeout 20 make -j8 -f Makefile test
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources --compile TestCounter.cpp -o TestCounter.o
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources --compile Test.cpp -o Test.o
+clang++-9  -std=c++2a -Werror -Wsign-conversion -Isources TestCounter.o Test.o objects/OrgChart.o -o test
+--- 3 seconds
+### Score 3: 100
+
+
+### Check 4: you should write some new tests
+! timeout 20 ./test
+[doctest] doctest version is "2.3.7"
+[doctest] run with "--help" for options
+===============================================================================
+Test.cpp:30:
+TEST CASE:  Family Oraganization
+
+Test.cpp:49: ERROR: CHECK_THROWS( family_org.add_sub("Pitbull", "Justin") ) did NOT throw at all!
+
+Test.cpp:50: ERROR: CHECK_THROWS( family_org.add_sub("Justin", "Hailey") ) did NOT throw at all!
+
+Test.cpp:51: ERROR: CHECK_THROWS( family_org.add_sub("Shirly", "Noya") ) did NOT throw at all!
+
+Test.cpp:52: ERROR: CHECK_THROWS( family_org.add_sub("Efrat", "Michal") ) did NOT throw at all!
+
+Test.cpp:53: ERROR: CHECK_THROWS( family_org.add_sub("Talya", "Noa") ) did NOT throw at all!
+
+Test.cpp:56: ERROR: CHECK_EQ( *(family_org.begin()), "Uri" ) is NOT correct!
+  values: CHECK_EQ(  , Uri )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ziv )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Fanun )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Vico )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ron )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Mirit )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ben )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Netanel )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Shani )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Liat )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Tehila )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Alon )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Galya )
+
+Test.cpp:65: ERROR: CHECK( *it == LevelOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Uri )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Uri )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Alon )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Galya )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ben )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Netanel )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Shani )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Liat )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Tehila )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Vico )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ron )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Mirit )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ziv )
+
+Test.cpp:76: ERROR: CHECK( *it == ReverseOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Fanun )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Uri )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Alon )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ben )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Vico )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Netanel )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Galya )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Shani )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ron )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Ziv )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Fanun )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Liat )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Mirit )
+
+Test.cpp:87: ERROR: CHECK( *it == PreOrderAns[i] ) is NOT correct!
+  values: CHECK(   == Tehila )
+
+--- 4 seconds
+### Score 4: 100
+
+
+Grade: 100
